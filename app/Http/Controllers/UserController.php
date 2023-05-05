@@ -6,5 +6,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    //
+    // ユーザの詳細表示
+    public function show($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        return view('users.show', compact('user'));
+    }
+
+    public function mypage()
+    {
+        $user = Auth::user();
+        return view('users.mypage', compact('user'));
+    }
 }
