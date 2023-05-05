@@ -26,6 +26,11 @@
                     </div>
                 </header>
             @endif
+
+            <body>
+            @yield('content')
+            </body>
+            
         </div>
     </body>
 </html>
