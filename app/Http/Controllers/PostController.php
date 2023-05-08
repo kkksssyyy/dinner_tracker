@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -47,7 +49,7 @@ class PostController extends Controller
         $post = Post::findOrFail($post_id);
 
         // ログインユーザーがフォローしているユーザーの一覧を取得する
-        $following = Auth::user()->following()->pluck('followed_user_id');
+        $following = Auth::user()->followings()->pluck('followee_id');
 
         // フォローしているユーザーの投稿のみを取得する
         $posts = Post::whereIn('user_id', $following)->latest()->get();

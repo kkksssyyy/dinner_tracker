@@ -39,9 +39,9 @@ Route::get('/user/{user_id}', [UserController::class, 'show']);
 // Route::post('/login', [AuthController::class, 'login']);
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/posts/create', [PostController::class, 'create']);
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store']);
-Route::get('/posts/{post_id}', [PostController::class, 'show']);
+Route::get('/posts/{post_id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/posts/{post_id}/edit', [PostController::class, 'edit']);
 Route::put('/posts/{post_id}', [PostController::class, 'update']);
 Route::delete('/posts/{post_id}', [PostController::class, 'destroy']);
