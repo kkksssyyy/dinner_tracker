@@ -42,9 +42,9 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/posts/{post_id}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/posts/{post_id}/edit', [PostController::class, 'edit']);
-Route::put('/posts/{post_id}', [PostController::class, 'update']);
-Route::delete('/posts/{post_id}', [PostController::class, 'destroy']);
+Route::get('/posts/{post_id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{post_id}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{post_id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::get('/groups', [GroupController::class, 'index']);
 Route::get('/groups/create', [GroupController::class, 'create']);

@@ -81,6 +81,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($post_id);
         $post->delete();
-        return redirect('/posts');
+
+        $user = Auth::user();
+
+        $posts = Post::where('user_id', $user->id)->latest()->get();
+
+        return view('home', ['posts' => $posts]);
     }
 }
