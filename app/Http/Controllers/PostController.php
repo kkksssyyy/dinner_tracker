@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -22,7 +23,7 @@ class PostController extends Controller
         // バリデーションルールを定義する
         $rules = [
             'title' => 'required|max:255',
-            'content' => 'required',
+            'body' => 'required',
         ];
 
         // バリデーションを実行する
@@ -35,7 +36,7 @@ class PostController extends Controller
         // ログインユーザーに紐づけて、新しい投稿を作成する
         $post = new Post();
         $post->title = $data['title'];
-        $post->content = $data['content'];
+        $post->body = $data['body'];
         $post->user_id = Auth::id();
         $post->save();
 
@@ -70,7 +71,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($post_id);
         $post->title = $request->input('title');
-        $post->content = $request->input('content');
+        $post->body = $request->input('body');
         $post->save();
         return redirect('/posts/' . $post_id);
     }
