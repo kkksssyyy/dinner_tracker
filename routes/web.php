@@ -37,7 +37,7 @@ Route::get('/search', [SearchController::class, 'search']);
 Route::get('/user/{user_id}', [UserController::class, 'show']);
 // Route::get('/login', [AuthController::class, 'showLoginForm']);
 // Route::post('/login', [AuthController::class, 'login']);
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
