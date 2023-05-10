@@ -11,5 +11,6 @@
         <li><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></li>
       @endforeach
     </ul>
+    <a href="{{ route('groups.create') }}">group create</a>
   </div>
 @endsection

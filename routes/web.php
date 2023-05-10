@@ -46,13 +46,15 @@ Route::get('/posts/{post_id}/edit', [PostController::class, 'edit'])->name('post
 Route::put('/posts/{post_id}', [PostController::class, 'update'])->name('posts.update');
 Route::delete('/posts/{post_id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
-Route::get('/groups', [GroupController::class, 'index']);
-Route::get('/groups/create', [GroupController::class, 'create']);
-Route::post('/groups', [GroupController::class, 'store']);
-Route::get('/groups/{group_id}', [GroupController::class, 'show']);
-Route::get('/groups/{group_id}/edit', [GroupController::class, 'edit']);
-Route::put('/groups/{group_id}', [GroupController::class, 'update']);
-Route::delete('/groups/{group_id}', [GroupController::class, 'destroy']);
+Route::get('/groups/create', [GroupController::class, 'create'])->name('groups.create');
+Route::post('/groups', [GroupController::class, 'store'])->name('groups.store');
+// グループ一覧を表示する
+Route::get('/groups', [GroupController::class, 'index'])->name('groups.index');
+// グループの詳細画面を表示する
+Route::get('/groups/{group_id}', [GroupController::class, 'show'])->name('groups.show');
+Route::get('/groups/{group_id}/edit', [GroupController::class, 'edit'])->name('groups.edit');
+Route::put('/groups/{group_id}', [GroupController::class, 'update'])->name('groups.update');
+Route::delete('/groups/{group_id}', [GroupController::class, 'destroy'])->name('groups.destroy');
 
 Route::get('/mypage', [UserController::class, 'mypage']);
 
