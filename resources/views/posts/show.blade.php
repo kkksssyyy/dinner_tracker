@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+  <img src="{{ asset('storage/images/filename.jpg') }}" alt="Image">
   <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ $post->title }}</h1>
   <p class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ $post->body }}</p>
   <p class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Created at: {{ $post->created_at }}</p>

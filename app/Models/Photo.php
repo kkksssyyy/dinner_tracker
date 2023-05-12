@@ -11,6 +11,8 @@ class Photo extends Model
 
     use HasFactory;
 
+    protected $fillable = ['path', 'post_id', 'description'];
+
      /**
      * 写真が所属する投稿
      */

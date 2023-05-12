@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-  <form method="POST" action="{{ route('posts.store') }}">
+  <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
       @csrf
+      <div>
+          <input type="file" name="image">
+      </div>
       <div>
           <label for="title" class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Title:</label>
           <input type="text" id="title" name="title">

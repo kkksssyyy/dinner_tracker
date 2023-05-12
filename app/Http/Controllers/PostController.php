@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Photo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -39,6 +40,10 @@ class PostController extends Controller
         $post->body = $data['body'];
         $post->user_id = Auth::id();
         $post->save();
+        
+        $image = $request->file('image');
+        $path = $image->store('public/images');
+        $photo = $post->photos()->create(['path' => $path, 'post_id' => $post->id, 'description' => '']);
 
         // リダイレクト先を指定する
         return redirect('/posts/' . $post->id);
