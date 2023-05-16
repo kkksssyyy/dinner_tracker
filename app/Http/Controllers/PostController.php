@@ -43,7 +43,10 @@ class PostController extends Controller
         
         $image = $request->file('image');
         $path = $image->store('public/images');
-        $photo = $post->photos()->create(['path' => $path, 'post_id' => $post->id, 'description' => '']);
+        $pathInfo = pathinfo($path);
+        $filename = $pathInfo['filename'];
+        $extension = $pathInfo['extension'];
+        $photo = $post->photos()->create(['path' => $filename . '.' . $extension, 'post_id' => $post->id, 'description' => '']);
 
         // リダイレクト先を指定する
         return redirect('/posts/' . $post->id);
