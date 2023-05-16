@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class SearchController extends Controller
 {
@@ -13,6 +14,6 @@ class SearchController extends Controller
         $posts = Post::where('title', 'like', '%' . $searchText . '%')
                 ->orWhere('body', 'like', '%' . $searchText . '%')
                 ->get();
-        return view('search_results', ['posts' => $posts]);
+        return view('search.results', ['posts' => $posts]);
     }
 }
